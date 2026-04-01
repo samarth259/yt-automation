@@ -28,4 +28,4 @@ def upload_video(title, description):
     )
 
     response = request.execute()
-    print("Uploaded:", response)
+    print(response)
