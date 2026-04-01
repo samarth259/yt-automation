@@ -1,5 +1,6 @@
 openai
 google-api-python-client
+google-auth
 gtts
 moviepy
 python-dotenv
