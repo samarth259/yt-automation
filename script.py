@@ -11,7 +11,9 @@ def generate_script(topic):
 
     response = client.chat.completions.create(
         model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}]
+        messages=[
+            {"role": "user", "content": prompt}
+        ]
     )
 
     return response.choices[0].message.content
