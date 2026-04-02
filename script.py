@@ -6,12 +6,11 @@ def generate_script(topic):
 
     prompt = f"""
     Create a viral YouTube Shorts script (30 seconds) about: {topic}.
-    Start with a strong hook in first 3 seconds.
-    Keep it engaging and fast-paced.
+    Start with a strong hook.
     """
 
     response = client.models.generate_content(
-        model="gemini-1.5-flash",
+        model="gemini-1.0-pro",  # SAFE fallback
         contents=prompt
     )
 
