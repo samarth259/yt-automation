@@ -10,7 +10,7 @@ def generate_script(topic):
     Make it engaging and fast-paced.
     """
 
-    model = genai.GenerativeModel("gemini-1.5-flash-latest")
+    model = genai.GenerativeModel("models/gemini-pro")
 
     response = model.generate_content(prompt)
 
