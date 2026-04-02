@@ -1,17 +1,18 @@
-import google.generativeai as genai
+from google import genai
 import os
 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-
 def generate_script(topic):
+    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
     prompt = f"""
     Create a viral YouTube Shorts script (30 seconds) about: {topic}.
     Start with a strong hook in first 3 seconds.
-    Make it engaging and fast-paced.
+    Keep it engaging and fast-paced.
     """
 
-    model = genai.GenerativeModel("models/gemini-pro")
-
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(
+        model="gemini-1.5-flash",
+        contents=prompt
+    )
 
     return response.text
