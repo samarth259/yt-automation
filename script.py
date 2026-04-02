@@ -1,19 +1,16 @@
-from openai import OpenAI
+import google.generativeai as genai
 import os
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 def generate_script(topic):
     prompt = f"""
-    Create a viral YouTube Shorts script (30 seconds) about: {topic}
-    Make it engaging and catchy.
+    Create a viral YouTube Shorts script (30 seconds) about: {topic}.
+    Make it engaging, catchy, and fast-paced.
     """
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "user", "content": prompt}
-        ]
-    )
+    model = genai.GenerativeModel("gemini-1.5-flash")
 
-    return response.choices[0].message.content
+    response = model.generate_content(prompt)
+
+    return response.text
